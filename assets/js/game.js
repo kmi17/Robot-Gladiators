@@ -1,7 +1,7 @@
 var playerName = window.prompt("What is your robot's name?");
 
 const player = new Player(playerName, 100, 10, 10);
-const enemy = new Player("Roborto", 50, 12, 0);
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 
 // You can also log multiple values at once like this
 console.log(player.name, player.attack, player.health);
@@ -11,12 +11,22 @@ var fight = function () {
   window.alert("Welcome to Robot Gladiators!");
   // Subtract the value of `playerAttack` from the value of `enemyHealth` and use that result to update the value in the `enemyHealth` variable
   var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-  while (player.health > 0 && enemy.health > 0) {
+  for (var i = 0; i < enemyNames.length; i++) {
+    const enemy = new Player(enemyNames[i], 50, 12, 0);
     // if player choses to fight, then fight
     if (promptFight === "fight" || promptFight === "FIGHT") {
       // remove enemy's health by subtracting the amount set in the playerAttack variable
       enemyHealth = enemyHealth - playerAttack;
-      console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+      console.log(
+        playerName +
+          " attacked " +
+          enemyName +
+          ". " +
+          enemyName +
+          " now has " +
+          enemyHealth +
+          " health remaining."
+      );
 
       // check enemy's health
       if (enemyHealth <= 0) {
